@@ -3,7 +3,7 @@ import "./style.css";
 
 class Header extends Component {
   render() {
-    return <div>THIS IS A VERY NAICE HEADER</div>;
+    return <div>熙雅</div>;
   }
 }
 

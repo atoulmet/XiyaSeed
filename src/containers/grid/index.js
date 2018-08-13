@@ -22,7 +22,11 @@ class Grid extends Component {
       </div>
     ));
 
-    return <div className={"row"}>{test}</div>;
+    return (
+      <div className={"rowContainer"}>
+        <div className={"row"}>{test}</div>
+      </div>
+    );
   }
 }
 
