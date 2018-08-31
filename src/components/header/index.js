@@ -3,7 +3,7 @@ import "./style.css";
 
 class Header extends Component {
   render() {
-    return <div>熙雅</div>;
+    return <div className='header'>XiyaSeed</div>;
   }
 }
 

@@ -22,6 +22,13 @@
   font-size: large;
 }
 
+.header {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2em;
+  text-align: right;
+  padding-right: 80px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
