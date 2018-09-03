@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CSSTransition } from "react-transition-group";
 import "./style.css";
 import test from "../../sources/text/test.json";
 
@@ -6,7 +7,8 @@ class Picture extends Component {
   constructor() {
     super();
     this.state = {
-      test: false
+      test: false,
+      afterMounting: false
     };
   }
   test = e => {
@@ -15,17 +17,39 @@ class Picture extends Component {
     this.setState({ test: true });
   };
 
+  componentDidMount() {
+    setTimeout(() => this.setState({ afterMounting: true }), 3);
+  }
+
   render() {
     const { src } = this.props;
+    const { afterMounting } = this.state;
 
     const translation =
       src === "/static/media/1.f97d9cce.JPG" && this.state.test ? true : false;
-    console.log(translation);
+
     const style = translation ? { marginBottom: "150px" } : {};
     return (
-      <div onClick={this.test}>
-        <img src={src} alt={"alt"} style={style} />
-      </div>
+      <CSSTransition
+        in={true}
+        timeout={{
+          enter: 500,
+          exit: 0
+        }}
+        classNames={{
+          enter: "onEnter",
+          enterActive: "onEnterActive"
+        }}
+      >
+        <div onClick={this.test}>
+          <img
+            src={src}
+            alt={"alt"}
+            style={style}
+            className={afterMounting ? "onEnterActive" : "onEnter"}
+          />
+        </div>
+      </CSSTransition>
     );
   }
 }

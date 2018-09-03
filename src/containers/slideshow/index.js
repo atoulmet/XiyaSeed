@@ -1,25 +1,47 @@
 import React, { Component } from "react";
-// import Picture from "../../components/picture";
+// import Grid from "./containers/grid";
+// import Header from "./components/header";
+import { Slide } from "../../components/slide";
+import { Test } from "../../components/slide";
+import { getPicturesFromCountry } from "./helpers/index.js";
 import "./style.css";
 
-const importAll = r => r.keys().map(r);
-
-const allImages = importAll(
-  require.context("../../sources/img", false, /\.(png|JPG|svg)$/)
-);
-
 class Slideshow extends Component {
-  render() {
+  state = {
+    slideshowIndex: 0,
+    country: "korea"
+  };
 
-    const style= {
-        backgroundImage: `url(${allImages[0]})`, 
-        backgroundSize: 'cover', 
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center'
-    }
+  render() {
+    const { country } = this.state;
+
+    const allImages = getPicturesFromCountry(country);
+
+    const { slideshowIndex } = this.state;
+    const next = slideshowIndex < allImages.length - 1 ? slideshowIndex + 1 : 0;
+    const prev = slideshowIndex ? slideshowIndex - 1 : allImages.length - 1;
+
     return (
-      <div className={"slideshow"} style={style}>
-        
+      <div className="slideshow">
+        <div
+          onClick={() => this.setState({ country: "japan", slideshowIndex: 0 })}
+        >
+          Japan
+        </div>
+        <div
+          className="navLinks"
+          onClick={() => this.setState({ slideshowIndex: prev })}
+        >
+          Prev
+        </div>
+        <Slide allImages={allImages} slideshowIndex={slideshowIndex} />
+        <Test allImages={allImages} slideshowIndex={slideshowIndex} />
+        <span
+          className="navLinks"
+          onClick={() => this.setState({ slideshowIndex: next })}
+        >
+          Next
+        </span>
       </div>
     );
   }

@@ -2,10 +2,20 @@ img {
   margin-top: 16px;
   vertical-align: middle;
   width: 100%;
-  transition: all 0.8s;
+  transition: all 2s;
 }
 
 img:hover {
   opacity: 0.7;
   transform: translate3d(0px, 0px, 0px);
+}
+
+.onEnter {
+  opacity: 0;
+  /* transform: translate(-100%); */
+}
+.onEnterActive {
+  opacity: 1;
+  /* transform: translateX(0); */
+  transition: 2000ms;
 }

@@ -1,0 +1,18 @@
+.onEnter {
+  opacity: 0;
+  /* transform: translate(-100%); */
+}
+.onEnterActive {
+  opacity: 1;
+  /* transform: translateX(0); */
+  transition: 900ms;
+}
+.onExit {
+  opacity: 1;
+  /* transform: translateX(0); */
+}
+.onExitActive {
+  opacity: 0;
+  /* transform: translateX(-100%); */
+  transition: 900ms;
+}
