@@ -4,13 +4,10 @@ import "./style.css";
 import test from "../../sources/text/test.json";
 
 class Picture extends Component {
-  constructor() {
-    super();
-    this.state = {
-      test: false,
-      afterMounting: false
-    };
-  }
+  state = {
+    test: false,
+    afterMounting: false
+  };
   test = e => {
     //Warning: the key has to be the same as the filename
     console.log("TEST", e.target, test["01"]);
@@ -28,7 +25,7 @@ class Picture extends Component {
     const translation =
       src === "/static/media/1.f97d9cce.JPG" && this.state.test ? true : false;
 
-    const style = translation ? { marginBottom: "150px" } : {};
+    const style = translation ? { marginBottom: "200px" } : {};
     return (
       <CSSTransition
         in={true}

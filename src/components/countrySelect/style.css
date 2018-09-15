@@ -1,0 +1,21 @@
+.countryContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 30px;
+  margin-top: 0;
+  justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+}
+
+.countryLink {
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  border: 5px solid #fcebf3;
+  /* background-color: #fcebf3; */
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

@@ -1,0 +1,25 @@
+.slideWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.navWrapper {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.prevNav {
+  height: 100%;
+  width: 20%;
+  cursor: pointer;
+}
+
+.nextNav {
+  height: 100%;
+  width: 20%;
+  cursor: pointer;
+}

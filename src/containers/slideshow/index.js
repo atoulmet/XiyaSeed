@@ -2,20 +2,21 @@ import React, { Component } from "react";
 // import Grid from "./containers/grid";
 // import Header from "./components/header";
 import { Slide } from "../../components/slide";
-import { Test } from "../../components/slide";
-import { getPicturesFromCountry } from "./helpers/index.js";
+// import { Test } from "../../components/slide";
+import { SlideNav } from "../../components/slideNav";
+import CountrySelect from "../../components/countrySelect";
+
+import { getPicturesFromCountry } from "../helpers/index.js";
+
 import "./style.css";
 
 class Slideshow extends Component {
   state = {
-    slideshowIndex: 0,
-    country: "korea"
+    slideshowIndex: 0
   };
 
   render() {
-    const { country } = this.state;
-
-    const allImages = getPicturesFromCountry(country);
+    const { selectCountry, allImages } = this.props;
 
     const { slideshowIndex } = this.state;
     const next = slideshowIndex < allImages.length - 1 ? slideshowIndex + 1 : 0;
@@ -23,25 +24,21 @@ class Slideshow extends Component {
 
     return (
       <div className="slideshow">
-        <div
-          onClick={() => this.setState({ country: "japan", slideshowIndex: 0 })}
+        <CountrySelect selectCountry={selectCountry} />
+        <SlideNav
+          onPrev={() => this.setState({ slideshowIndex: prev })}
+          onNext={() => this.setState({ slideshowIndex: next })}
         >
-          Japan
-        </div>
-        <div
-          className="navLinks"
-          onClick={() => this.setState({ slideshowIndex: prev })}
-        >
-          Prev
-        </div>
-        <Slide allImages={allImages} slideshowIndex={slideshowIndex} />
-        <Test allImages={allImages} slideshowIndex={slideshowIndex} />
-        <span
+          <Slide allImages={allImages} slideshowIndex={slideshowIndex} />
+          {/* <Test allImages={allImages} slideshowIndex={slideshowIndex} /> */}
+        </SlideNav>
+        {/* <span
           className="navLinks"
           onClick={() => this.setState({ slideshowIndex: next })}
         >
           Next
-        </span>
+          https://www.npmjs.com/package/react-masonry-infinite
+        </span> */}
       </div>
     );
   }
